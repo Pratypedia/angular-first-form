@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User table</title>
+</head>
+<body>
+  <br>
+  <table class="table table-striped table-bordered">
+    <thead class="thead thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Username</th>
+        <th scope="col">Password</th>
+        <th scope="col">Phone No.</th>
+        <th scope="col">Email?</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Contacts</th>
+        <th scope="col">Valid till</th>
+        <th scope="col">AppID</th>
+        <th scope="col">Capactiy</th>
+        <th scope="col">Postscript</th>
+        <th scope="col">authorization</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr id="table_value.indexOf(value)" *ngFor="let value of table_value">
+        <th scope="row">{{table_value.indexOf(value)+1}}</th>
+        <td>{{value.fname}}</td>
+        <td>{{value.username}}</td>
+        <td>{{value.Password}}</td>
+        <td>{{value.Phone}}}}</td>
+        <td>{{value.emailSwitch?true:false}}</td>
+        <td>{{value.Email}}</td>
+        <td>{{value.address}}</td>
+        <td>{{value.contacts}}</td>
+        <td>{{value.Valid_period}}</td>
+        <td>{{value.appID}}</td>
+        <td>{{value.Capacity}}</td>
+        <td>@{{value.Postscript}}</td>
+        <td>@{{value.authorization?true:false}}</td>
+        <td><button (click)="delete(table_value.indexOf(value))" type="button" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
