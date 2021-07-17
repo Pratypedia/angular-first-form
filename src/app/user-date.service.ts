@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -7,15 +8,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserDataService {
   private userDataSource = new BehaviorSubject<UserInfo[]>([]);
   userData = this.userDataSource.asObservable();
-  arr: Array<UserInfo> = [];
+  arr: UserInfo[];
 
-  private editFormValues = new BehaviorSubject<Object>([]);
+  private editFormValues = new BehaviorSubject<any>([]);
   formValues = this.editFormValues.asObservable();
 
-  constructor() {
-    this.arr = localStorage.getItem('userInfo')
-      ? JSON.parse(localStorage.getItem('userInfo'))
-      : [];
+  constructor(private http: HttpClient) {
+   this.http.get('http://localhost:8080/').toPromise().then(value=> {
+     console.log(value);
+     this.editFormValues.next(value);
+   });
   }
 
   getAllUserInfo() {
@@ -42,20 +44,24 @@ export class UserDataService {
     this.userDataSource.next(this.arr);
     localStorage.setItem('userInfo', JSON.stringify(this.arr));
   }
+  delete(value)
+  {
+    return(this.http.delete('http://localhost:8080/user-info/' + value.id));
+  }
 }
 
 export class UserInfo {
   fname: string;
   username: string;
-  Password: string;
-  Phone: string;
+  password: string;
+  phone: string;
   emailSwitch: boolean;
-  Email: string;
+  email: string;
   address: string;
   contacts: number;
-  Valid_period: string;
+  valid_period: string;
   appID: string;
-  Capacity: number;
-  Postscript: string;
+  capacity: number;
+  postscript: string;
   authorization: boolean;
 }

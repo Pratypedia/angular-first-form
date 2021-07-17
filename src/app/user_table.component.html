@@ -30,18 +30,18 @@
         <th scope="row">{{table_value.indexOf(value)+1}}</th>
         <td>{{value.fname}}</td>
         <td>{{value.username}}</td>
-        <td>{{value.Password}}</td>
-        <td>{{value.Phone}}}}</td>
+        <td>{{value.password}}</td>
+        <td>{{value.phone}}</td>
         <td>{{value.emailSwitch?true:false}}</td>
-        <td>{{value.Email}}</td>
+        <td>{{value.email}}</td>
         <td>{{value.address}}</td>
         <td>{{value.contacts}}</td>
-        <td>{{value.Valid_period}}</td>
+        <td>{{value.valid_period}}</td>
         <td>{{value.appID}}</td>
-        <td>{{value.Capacity}}</td>
-        <td>@{{value.Postscript}}</td>
+        <td>{{value.capacity}}</td>
+        <td>@{{value.postscript}}</td>
         <td>@{{value.authorization?true:false}}</td>
-        <td><button (click)="delete(table_value.indexOf(value))" type="button" class="btn btn-danger">Delete</button></td>
+        <td><button (click)="delete(value)" type="button" class="btn btn-danger">Delete</button></td>
       </tr>
     </tbody>
   </table>

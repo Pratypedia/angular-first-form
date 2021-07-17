@@ -9,11 +9,19 @@ import { UserDataService, UserInfo } from './user-date.service';
 export class TableComponent implements OnInit {
   table_value: UserInfo[];
   constructor(private user_service: UserDataService) {
-    this.table_value= localStorage.getItem('userInfo')?JSON.parse(localStorage.getItem('userInfo')):[];
+  this.user_service.formValues.subscribe(value=> {
+    this.table_value=value;
+    console.log(value);
+  })
   }
 
-delete(sr:number) {
-  this.table_value.splice(sr, 1);
+delete(value) {
+  this.user_service.delete(value).subscribe(val=> {
+    console.log(val);
+    this.table_value = this.user_service.getAllUserInfo;
+    //this.table_value = val;
+  }
+  );
 }
 
   ngOnInit() {

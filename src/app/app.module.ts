@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { TableComponent } from './user_table.component';
 
+import {HttpClientModule } from '@angular/common/http';
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule ],
+  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule  ],
   declarations: [ AppComponent, HelloComponent, TableComponent ],
   bootstrap:    [ AppComponent ]
 })
